@@ -1,0 +1,46 @@
+/*
+Question 1:
+Write a program to print the sum of all odd digits
+and sum of all even digits of a number.
+
+Also find the time and space complexity of the code.
+*/
+
+#include <stdio.h>
+
+int main()
+{
+    int num, digit;
+    int oddSum = 0, evenSum = 0;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    while (num != 0)
+    {
+        digit = num % 10;
+
+        if (digit % 2 == 0)
+        {
+            evenSum = evenSum + digit;
+        }
+        else
+        {
+            oddSum = oddSum + digit;
+        }
+
+        num = num / 10;
+    }
+
+    printf("Sum of odd digits = %d\n", oddSum);
+    printf("Sum of even digits = %d\n", evenSum);
+
+    return 0;
+}
+
+/*
+Time Complexity: O(d)
+where d is the number of digits in the number.
+
+Space Complexity: O(1)
+*/

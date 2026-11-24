@@ -1,0 +1,69 @@
+/*
+Question 4:
+Write a program to check for string palindrome?
+Learn its optimized approach also.
+
+Go for time complexity analysis using time.h header file.
+*/
+
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
+
+int isPalindrome(char str[]) {
+    int left = 0;
+    int right = strlen(str) - 1;
+
+    while (left < right) {
+        if (str[left] != str[right]) {
+            return 0;
+        }
+
+        left++;
+        right--;
+    }
+
+    return 1;
+}
+
+int main() {
+    char str[1000];
+    clock_t start, end;
+    double time_taken;
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    // Remove newline added by fgets
+    str[strcspn(str, "\n")] = '\0';
+
+    start = clock();
+
+    int result = isPalindrome(str);
+
+    end = clock();
+
+    if (result)
+        printf("The string is a palindrome.\n");
+    else
+        printf("The string is not a palindrome.\n");
+
+    time_taken = ((double)(end - start)) / CLOCKS_PER_SEC;
+
+    printf("Execution Time: %f seconds\n", time_taken);
+
+    return 0;
+}
+
+/*
+Optimized Approach:
+Use two pointers:
+1. One pointer starts from the beginning.
+2. Another pointer starts from the end.
+3. Compare both characters.
+4. Move both pointers towards the center.
+5. If any characters do not match, the string is not a palindrome.
+
+Time Complexity: O(n)
+Space Complexity: O(1)
+*/
